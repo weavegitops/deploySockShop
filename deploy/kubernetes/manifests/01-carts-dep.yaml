@@ -5,6 +5,7 @@ metadata:
   name: carts
   labels:
     name: carts
+    owner: josetalavera
   namespace: sock-shop
 spec:
   replicas: 1
