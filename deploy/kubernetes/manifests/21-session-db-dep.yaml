@@ -1,10 +1,10 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: session-db
   labels:
     name: session-db
+    owner: tony2
   namespace: sock-shop
 spec:
   replicas: 1
@@ -19,19 +19,20 @@ spec:
         prometheus.io.scrape: "false"
     spec:
       containers:
-      - name: session-db
-        image: redis:alpine
-        ports:
-        - name: redis
-          containerPort: 6379
-        securityContext:
-          capabilities:
-            drop:
-              - all
-            add:
-              - CHOWN
-              - SETGID
-              - SETUID
-          readOnlyRootFilesystem: true
+        - name: session-db
+          image: redis:alpine
+          ports:
+            - name: redis
+              containerPort: 6379
+          securityContext:
+            capabilities:
+              drop:
+                - all
+              add:
+                - CHOWN
+                - SETGID
+                - SETUID
+            readOnlyRootFilesystem: true
       nodeSelector:
         beta.kubernetes.io/os: linux
+

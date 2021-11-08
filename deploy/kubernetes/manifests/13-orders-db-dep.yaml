@@ -1,10 +1,10 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: orders-db
   labels:
     name: orders-db
+    owner: tony2
   namespace: sock-shop
 spec:
   replicas: 1
@@ -17,26 +17,27 @@ spec:
         name: orders-db
     spec:
       containers:
-      - name: orders-db
-        image: mongo
-        ports:
-        - name: mongo
-          containerPort: 27017
-        securityContext:
-          capabilities:
-            drop:
-              - all
-            add:
-              - CHOWN
-              - SETGID
-              - SETUID
-          readOnlyRootFilesystem: true
-        volumeMounts:
-        - mountPath: /tmp
-          name: tmp-volume
+        - name: orders-db
+          image: mongo
+          ports:
+            - name: mongo
+              containerPort: 27017
+          securityContext:
+            capabilities:
+              drop:
+                - all
+              add:
+                - CHOWN
+                - SETGID
+                - SETUID
+            readOnlyRootFilesystem: true
+          volumeMounts:
+            - mountPath: /tmp
+              name: tmp-volume
       volumes:
         - name: tmp-volume
           emptyDir:
             medium: Memory
       nodeSelector:
         beta.kubernetes.io/os: linux
+
