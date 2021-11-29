@@ -4,7 +4,7 @@ metadata:
   name: catalogue
   labels:
     name: catalogue
-    owner: josetala
+    owner: josetalavera
   namespace: sock-shop
 spec:
   replicas: 1
