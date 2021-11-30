@@ -20,9 +20,6 @@ spec:
       containers:
       - name: catalogue-db
         image: weaveworksdemos/catalogue-db:0.3.0
-        securityContext:
-          readOnlyRootFilesystem: false
-          allowPrivilegeEscalation: true
         env:
           - name: MYSQL_ROOT_PASSWORD
             value: fake_password
