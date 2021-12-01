@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo
+  labels:
+    app: demo
+spec:
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+      - name: demo1
+        image: busybox
+        command: [ "sh", "-c", "sleep 1h" ]
+        securityContext:
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+      - name: demo2
+        image: busybox
+        command: [ "sh", "-c", "sleep 1h" ]
+        securityContext:
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
