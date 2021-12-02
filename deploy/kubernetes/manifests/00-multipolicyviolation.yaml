@@ -4,6 +4,7 @@ metadata:
   name: demo
   labels:
     app: demo
+    owner: josetalaver
 spec:
   selector:
     matchLabels:
@@ -18,8 +19,8 @@ spec:
         image: busybox
         command: [ "sh", "-c", "sleep 1h" ]
         securityContext:
-          readOnlyRootFilesystem: true
-          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: false
+          allowPrivilegeEscalation: true
       - name: demo2
         image: busybox
         command: [ "sh", "-c", "sleep 1h" ]
