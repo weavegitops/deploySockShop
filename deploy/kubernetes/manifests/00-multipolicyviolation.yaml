@@ -19,7 +19,7 @@ spec:
           image: busybox
           command: ["sh", "-c", "sleep 1h"]
           securityContext:
-            readOnlyRootFilesystem: true
+            readOnlyRootFilesystem: false
             allowPrivilegeEscalation: false
         - name: demo2
           image: busybox
