@@ -4,7 +4,7 @@ metadata:
   name: demo
   labels:
     app: demo
-    owner: josetalaver
+    owner: josetalavera
 spec:
   selector:
     matchLabels:
